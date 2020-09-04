@@ -25,6 +25,7 @@ public class GOT_Homework {
                             when()
                                 .get("/characters")
                                 ;
+
         List<String> houseStarkList =
                     response.jsonPath().getList(" findAll {it.house=='House Stark'}.name ") ;
         System.out.println("houseStarkList = " + houseStarkList);

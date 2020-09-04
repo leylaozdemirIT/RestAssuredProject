@@ -24,13 +24,9 @@
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
     <loaded-nodes>
-      <connection connection-id="0955719a-cf0e-401a-9afc-8ffb1226beb8">
-        <schema name="HR" object-types="type, dimension, procedure, sequence, synonym, table, database trigger, package, index, dataset trigger, type function, materialized view, function, cluster, view, dblink, column, nested table, constraint, package function, package type" />
-        <schema name="PUBLIC" object-types="type, sequence, synonym, table, package, materialized view, function, view" />
-      </connection>
       <connection connection-id="e5b27209-14d8-4209-85de-7beea98e30b7">
-        <schema name="PUBLIC" object-types="synonym, table, materialized view, view" />
-        <schema name="SP" object-types="synonym, table, materialized view, view" />
+        <schema name="PUBLIC" object-types="function, sequence, type, view, materialized view, synonym, table, package" />
+        <schema name="SP" object-types="procedure, package type, function, column, sequence, dimension, package function, cluster, type, view, materialized view, dblink, database trigger, synonym, table, package, type function" />
       </connection>
     </loaded-nodes>
   </component>
@@ -42,7 +38,7 @@
       <console name="Connection 1" type="STANDARD" schema="" session="Main" />
     </connection>
     <connection id="e5b27209-14d8-4209-85de-7beea98e30b7">
-      <console name="Connection 2" type="STANDARD" schema="SP" session="Main"><![CDATA[Select * from spartans;]]></console>
+      <console name="Connection 2" type="STANDARD" schema="SP" session="Main"><![CDATA[SELECT * FROM SPARTANS ORDER BY SPARTAN_ID DESC;]]></console>
     </connection>
     <connection id="508aea04-a709-4b10-be74-98a02d26e8bc">
       <console name="Connection 3" type="STANDARD" schema="" session="Main" />
