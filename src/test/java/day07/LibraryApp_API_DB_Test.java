@@ -52,14 +52,8 @@ public class LibraryApp_API_DB_Test {
         then()
                 .body("book_count",is(bookCount) )
                 .body("borrowed_books",is(borrowedBookCount) )
-                .body("users",is(userCount) )
-
-        ;
-
-
-
+                .body("users",is(userCount) );
     }
-
 
     @AfterAll
     public static void destroy(){

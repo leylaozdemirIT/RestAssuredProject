@@ -23,19 +23,14 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes>
-      <connection connection-id="e5b27209-14d8-4209-85de-7beea98e30b7">
-        <schema name="PUBLIC" object-types="function, sequence, type, view, materialized view, synonym, table, package" />
-        <schema name="SP" object-types="procedure, package type, function, column, sequence, dimension, package function, cluster, type, view, materialized view, dblink, database trigger, synonym, table, package, type function" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="0955719a-cf0e-401a-9afc-8ffb1226beb8">
       <console name="Connection" type="STANDARD" schema="HR" session="Main"><![CDATA[select MIN(SALARY) from EMPLOYEES;]]></console>
     </connection>
     <connection id="211d3faa-f85a-46b5-ac8d-646c86c2c104">
-      <console name="Connection 1" type="STANDARD" schema="" session="Main" />
+      <console name="Connection 1" type="STANDARD" schema="" session="Main"><![CDATA[Select count(*) from books;]]></console>
     </connection>
     <connection id="e5b27209-14d8-4209-85de-7beea98e30b7">
       <console name="Connection 2" type="STANDARD" schema="SP" session="Main"><![CDATA[SELECT * FROM SPARTANS ORDER BY SPARTAN_ID DESC;]]></console>
