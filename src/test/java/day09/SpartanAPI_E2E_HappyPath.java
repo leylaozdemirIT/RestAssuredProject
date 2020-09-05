@@ -14,7 +14,7 @@ public class SpartanAPI_E2E_HappyPath {
     // we want the id that generated from post request accessible for all the tests
     static int newID;
     // We want exact order 1.Add, 2.Read, 3.Update, 4.Delete
-    static Spartan sp1 = new Spartan("Leyla Ozdemir", "Female", 1231231231);
+    static Spartan sp1 = new Spartan("Derin Ozdemir", "Female", 4561238989L);
 
     @BeforeAll
     public static void init() {
@@ -30,11 +30,12 @@ public class SpartanAPI_E2E_HappyPath {
         // gran the id so it can be used for all next 3 tests
         System.out.println("New ID is generated from the post request and saved " );
         Response response = given()
-                .contentType(ContentType.JSON)
-                .body(sp1).
-                        when()
-                .post("/spartans");
+                                .body(sp1)
+                                .contentType(ContentType.JSON).
+                            when()
+                                .post("/spartans");
         newID = response.jsonPath().getInt("data.id");
+
         System.out.println(newID);
     }
     @Order(2)
@@ -49,11 +50,11 @@ public class SpartanAPI_E2E_HappyPath {
         System.out.println(" The ID from Add Data Test is "  + newID);
         System.out.println("Using this ID for get Request ");
         Response response = given()
-                .log().all()
-                .pathParam("id",newID).
-                        when()
-                .get("/spartans/{id}");
-        assertEquals(response.jsonPath().getInt("id"),newID);
+                                .log().all()
+                                .pathParam("id",newID).
+                            when()
+                                .get("/spartans/{id}");
+      assertEquals(response.jsonPath().getInt("id"),newID);
     }
     @Order(3)
     @Test
@@ -64,7 +65,7 @@ public class SpartanAPI_E2E_HappyPath {
                 .formParam("gender","Male")
                 .formParam("phone","1234567890")
                 .pathParam("id",newID).
-                when()
+        when()
                 .put("/spartans/{id}");
         System.out.println(" The ID from Add Data Test is "  + newID);
         System.out.println("Using this ID for PUT Request ");
@@ -74,7 +75,7 @@ public class SpartanAPI_E2E_HappyPath {
     public void testDeleteData(){
         given()
                 .pathParam("id",newID).
-                when()
+        when()
                 .delete("/spartans/{id}");
         System.out.println(" The ID from Add Data Test is "  + newID);
         System.out.println("Using this ID for DELETE Request ");

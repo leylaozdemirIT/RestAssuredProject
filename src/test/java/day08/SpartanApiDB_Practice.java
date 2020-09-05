@@ -62,6 +62,7 @@ public class SpartanApiDB_Practice {
         String query = "SELECT * FROM SPARTANS     " +
                 " WHERE LOWER(gender) = 'female'  " +
                 " and LOWER(name) LIKE '%a%' ";
+
         DB_Utility.runQuery( query ) ;
         //DB_Utility.displayAllData();
         //  if you do , get the row count so we can see how many data returned
@@ -125,12 +126,9 @@ public class SpartanApiDB_Practice {
         // how to assert 2 list have same content
         assertEquals(idListFromDB, idListFromResponse);
 
-
-
 //        int expectedResult = DB_Utility.getRowCount() ;
         // this is using junit assertion , you can use hamcrest if you want.
 //        assertEquals(expectedResult,resultCount);
-
 
     }
 

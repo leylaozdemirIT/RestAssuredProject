@@ -1,6 +1,7 @@
 package day08;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
@@ -8,6 +9,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 // to order your test , since you have put any text in DisplayName
 // you can play around with first character to change the order in any way you want
 // JUNIT 5 ONLY FEATURE !!
+@TestMethodOrder(MethodOrderer.DisplayName.class)
 public class MethodOrderByDisplayNameExample {
 
     @DisplayName("A. Test this A")
