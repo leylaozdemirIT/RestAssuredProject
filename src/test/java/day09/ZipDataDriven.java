@@ -43,7 +43,7 @@ public class ZipDataDriven {
         assertThat( jp.getString("'state abbreviation'"), is(expectedState) );
         assertThat( jp.getString("'place name'"), is(expectedCity) );
 
-        // now we want to count how many item in jsonArray from the respons e
+        // now we want to count how many item in jsonArray from the response
         // and validate that against our csv file expected numbers
         // since post code key has space in between we have to add '' to treat it as one
         List<String> zipList = jp.getList("places.'post code'") ;

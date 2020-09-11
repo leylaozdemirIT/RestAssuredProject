@@ -22,7 +22,6 @@ import static io.restassured.RestAssured.*;
 
 public class LibraryAppReusingTheSpecification_Shorter {
 
-
     @BeforeAll
     public static void init(){
 
@@ -78,7 +77,6 @@ public class LibraryAppReusingTheSpecification_Shorter {
     @Test
     public void testGetAllUsers(){
 
-
         Response response =  when().get(" /get_all_users");
         JsonPath jp = response.jsonPath();
         List<User> allUserLst = jp.getList("", User.class) ;
@@ -91,11 +89,10 @@ public class LibraryAppReusingTheSpecification_Shorter {
     @Test
     public void testGet_Dashboard_stats(){
 
-
-        Response response =  when().get(" /dashboard_stats").prettyPeek();
+        Response response = when().get(" /dashboard_stats").prettyPeek();
         // if there is no path needed to get to what you are looking for
         // or if you wanted to point to your entire response , you can just provide ""
-        Map<String,Integer> statMap = response.jsonPath().getMap("") ;
+        Map<String, String> statMap = response.jsonPath().getMap("");
         System.out.println("statMap = " + statMap);
 
     }

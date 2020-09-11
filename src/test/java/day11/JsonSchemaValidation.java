@@ -26,7 +26,7 @@ public class JsonSchemaValidation {
         given()
                 .log().uri().
         when()
-                .get("/spartans/{id}",55)
+                .get("/spartans/{id}",25)
                 .prettyPeek().
         then()
                 .body( matchesJsonSchemaInClasspath("singleSpartanSchema.json") );

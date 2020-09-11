@@ -33,7 +33,7 @@ public class GettingDataFromOtherRequests {
      *  2. store the result as List of pojo
      *  3. initially just the the first data and use it for GET /Spartans/{id} request
      *      and use the name , gender , phone for body validation
-     *  4 , eventually randomize the way you get the ID from List of Pojo
+     *  4. eventually randomize the way you get the ID from List of Pojo
      */
     @Test
     public void testTheDynamicID(){
@@ -52,9 +52,9 @@ public class GettingDataFromOtherRequests {
         // GET /spartans/{id}
         given()
                 .pathParam("id", firstSpartanIDFromTheList).
-                when()
+        when()
                 .get("/spartans/{id}").
-                then()
+        then()
                 .statusCode(200)
                 .body("name" , is(firstSpartanNameFromTheList ) );
 

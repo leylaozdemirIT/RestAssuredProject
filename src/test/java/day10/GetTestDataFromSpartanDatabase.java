@@ -2,6 +2,7 @@ package day10;
 
 import com.github.javafaker.Faker;
 import io.restassured.RestAssured;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -38,12 +39,11 @@ public class GetTestDataFromSpartanDatabase {
         int idFromDB = Integer.parseInt(firstRowMap.get("SPARTAN_ID"));
         String nameFromDB = firstRowMap.get("NAME");
         String genderFromDB = firstRowMap.get("GENDER");
-        ;
         long phoneFromDB = Long.parseLong(firstRowMap.get("PHONE"));
 
         when()
                 .get("/spartans/{id}", idFromDB).
-                then()
+        then()
                 .log().all()
                 .statusCode(200)
                 .body("id", is(idFromDB))
@@ -77,7 +77,7 @@ public class GetTestDataFromSpartanDatabase {
         int randomRowNum = new Faker().number().numberBetween(1, rowCount);
 
         Map<String, String> randomRowMap = DB_Utility.getRowMap(randomRowNum);
-        System.out.println("CURRENT ROW IS " + randomRowNum);
+        System.out.println("CURRENT ROW NUMBER IS " + randomRowNum);
         System.out.println("CURRENT ROW DATA IS " + randomRowMap);
 
         // EVERYTHING ELSE IS EXACTLY THE SAME OTHER THAN THE MAP NAME
@@ -88,14 +88,21 @@ public class GetTestDataFromSpartanDatabase {
 
         given()
                 .log().uri().
-                when()
+        when()
                 .get("/spartans/{id}", idFromDB).
-                then()
+        then()
                 .log().all()
                 .statusCode(200)
                 .body("id", is(idFromDB))
                 .body("name", is(nameFromDB))
                 .body("gender", is(genderFromDB))
                 .body("phone.toLong()", is(phoneFromDB));
+    }
+
+    @AfterAll
+    public static void destroy(){
+
+        DB_Utility.destroy();
+        RestAssured.reset();
     }
 }

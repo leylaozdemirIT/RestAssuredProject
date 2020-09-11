@@ -31,9 +31,9 @@ public class SpartanRoleBaseAccessControlNegativeTest{
                 .auth().basic("user","user")
                 .accept(ContentType.JSON)
                 .log().all().
-                when()
+        when()
                 .delete("/spartans/{id}" , 10).
-                then()
+        then()
                 .statusCode(403)
                 .contentType(ContentType.JSON)
                 .header("Date", is( notNullValue() ) ) // checking Date header is not null
@@ -53,15 +53,13 @@ public class SpartanRoleBaseAccessControlNegativeTest{
                 .log().all()
                 .contentType(ContentType.JSON)
                 .body(spartanObj).
-                when()
+        when()
                 .put("/spartans/{id}", 10).
-                then()
+        then()
                 .statusCode(403)
                 .contentType(ContentType.JSON)
                 .header("Date", is( notNullValue() ) ) // checking Date header is not null
                 .log().all();
-
-
     }
 
     @DisplayName("User should not be able to post data")
@@ -76,17 +74,14 @@ public class SpartanRoleBaseAccessControlNegativeTest{
                 .log().all()
                 .contentType(ContentType.JSON)
                 .body(spartanObj).
-                when()
+        when()
                 .post("/spartans").
-                then()
+        then()
                 .statusCode(403)
                 .contentType(ContentType.JSON)
                 .header("Date", is( notNullValue() ) ) // checking Date header is not null
                 .log().all();
 
     }
-
-
-
 
 }

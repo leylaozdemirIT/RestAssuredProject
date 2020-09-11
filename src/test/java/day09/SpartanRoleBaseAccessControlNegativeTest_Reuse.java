@@ -69,21 +69,26 @@ public class SpartanRoleBaseAccessControlNegativeTest_Reuse {
 
         Spartan spartanObj = new Spartan("some name", "Male", 8888888888L) ;
 
-        given()
+        RequestSpecification req = given()
                 .auth().basic("user","user")
                 .accept(ContentType.JSON)
                 .log().all()
                 .contentType(ContentType.JSON)
-                .body(spartanObj).
+                .body(spartanObj);
+
+        ResponseSpecBuilder resSpecBuilder = new ResponseSpecBuilder() ;
+
+        ResponseSpecification responseSpecification= resSpecBuilder.expectStatusCode(403)
+                                .expectContentType(ContentType.JSON)
+                                .log(LogDetail.ALL)
+                                .expectHeader("Date", notNullValue(String.class))
+                                .build();
+        given()
+                .spec(req).
         when()
-                .put("/spartans/{id}", 10).
+                .put("/spartans/{id}",10).
         then()
-                .statusCode(403)
-                .contentType(ContentType.JSON)
-                .header("Date", is( notNullValue() ) ) // checking Date header is not null
-                .log().all();
-
-
+                .spec(responseSpecification);
     }
 
     @DisplayName("User should not be able to post data")
@@ -92,19 +97,25 @@ public class SpartanRoleBaseAccessControlNegativeTest_Reuse {
 
         Spartan spartanObj = new Spartan("some name", "Male", 8888888888L) ;
 
+        RequestSpecification requestSpecification = given()
+                                                            .auth().basic("user","user")
+                                                            .accept(ContentType.JSON)
+                                                            .log().all()
+                                                            .contentType(ContentType.JSON)
+                                                            .body(spartanObj);
+        ResponseSpecBuilder responseSpecBuilder = new ResponseSpecBuilder();
+
+        ResponseSpecification responseSpecification = responseSpecBuilder
+                                                .expectStatusCode(403)
+                                                .expectHeader("Date",notNullValue(String.class))
+                                                .expectContentType(ContentType.JSON)
+                                                .log(LogDetail.ALL).build();
         given()
-                .auth().basic("user","user")
-                .accept(ContentType.JSON)
-                .log().all()
-                .contentType(ContentType.JSON)
-                .body(spartanObj).
+                .spec(requestSpecification).
         when()
                 .post("/spartans").
         then()
-                .statusCode(403)
-                .contentType(ContentType.JSON)
-                .header("Date", is( notNullValue() ) ) // checking Date header is not null
-                .log().all();
+                .spec(responseSpecification);
 
     }
 

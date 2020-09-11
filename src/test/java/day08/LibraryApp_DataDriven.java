@@ -11,6 +11,7 @@ import utility.LibraryUtil;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.Matchers.is;
 
 public class LibraryApp_DataDriven {
 
@@ -26,17 +27,16 @@ public class LibraryApp_DataDriven {
     // iteration 1 | username:firstcoldata, password:secondColdata
     @ParameterizedTest(name = "iteration{index} | username:{0}, password:{1}")
     @CsvFileSource(resources = "/credentials.csv")
-    public void simpleRead(String user, String pass){
+    public void testLoginCredentials(String user, String pass) {
 
-//        System.out.println("user = " + user);
-//        System.out.println("pass = " + pass);
+        System.out.println("user = " + user);
+        System.out.println("pass = " + pass);
         // so now lets make a post request to /login
         // content type is x-www-form-urlencoded
         // form data email, password
         // check if the status code 200 if the password is correct
         // check the token field from the response is not null
         given()
-                .log().all()
                 .contentType(ContentType.URLENC)
                 .formParam("email",user)
                 .formParam("password",pass).
@@ -44,7 +44,8 @@ public class LibraryApp_DataDriven {
                 .post("/login").
         then()
                 .statusCode(200)
-                .body("token", notNullValue());
+                .body("token",notNullValue() );
+
     }
 
     @AfterAll

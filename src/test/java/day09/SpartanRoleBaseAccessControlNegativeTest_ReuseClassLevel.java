@@ -48,6 +48,8 @@ public class SpartanRoleBaseAccessControlNegativeTest_ReuseClassLevel {
 
         given()
                 .spec(requestSpec).
+        when()
+                .delete("/spartans/{id}", 10).
         then()
                 .spec(responseSpec);
     }

@@ -23,13 +23,7 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes>
-      <connection connection-id="e5b27209-14d8-4209-85de-7beea98e30b7">
-        <schema name="APEX_040000" object-types="procedure, function, synonym" />
-        <schema name="PUBLIC" object-types="function, type, package, sequence, table, view, synonym, materialized view" />
-        <schema name="SP" object-types="dblink, procedure, database trigger, package function, type function, function, index, type, dataset trigger, package, constraint, sequence, nested table, table, view, dimension, synonym, package type, materialized view, cluster, column" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="0955719a-cf0e-401a-9afc-8ffb1226beb8">
@@ -39,8 +33,8 @@
       <console name="Connection 1" type="STANDARD" schema="" session="Main"><![CDATA[Select count(*) from books;]]></console>
     </connection>
     <connection id="e5b27209-14d8-4209-85de-7beea98e30b7">
-      <console name="Connection 2" type="STANDARD" schema="SP" session="Main"><![CDATA[SELECT * FROM SPARTANS WHERE lower(GENDER) = 'female' and 
-lower(NAME) LIKE '%a%';]]></console>
+      <console name="Connection 2" type="STANDARD" schema="SP" session="Main"><![CDATA[SELECT * FROM SPARTANS
+ORDER BY SPARTAN_ID DESC;]]></console>
     </connection>
     <connection id="508aea04-a709-4b10-be74-98a02d26e8bc">
       <console name="Connection 3" type="STANDARD" schema="" session="Main" />
